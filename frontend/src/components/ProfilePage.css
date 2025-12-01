@@ -1,0 +1,355 @@
+/* ==============================
+   Profile Page (Pride Theme)
+   ============================== */
+
+.profile-page {
+  --bg: linear-gradient(
+    135deg,
+    #ff9a9e 0%,
+    #fad0c4 25%,
+    #fbc2eb 50%,
+    #a6c1ee 75%,
+    #b2f7ef 100%
+  );
+  --card: rgba(255, 255, 255, 0.95);
+  --text: #1e293b;
+  --muted: #64748b;
+  --accent: linear-gradient(
+    90deg,
+    #ff6b6b,
+    #feca57,
+    #48dbfb,
+    #5f27cd,
+    #10b981
+  );
+  --accent-solid: #ff6b6b;
+  --border: #e2e8f0;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  animation: prideFlow 12s ease infinite alternate;
+  background-size: 400% 400%;
+}
+
+/* Pride background animation */
+@keyframes prideFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Profile card container */
+.profile-card {
+  background: var(--card);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  max-width: 800px;
+  width: 100%;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+  background-image: linear-gradient(white, white), var(--accent);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* Profile banner */
+.profile-banner {
+  width: 100%;
+  height: 200px;
+  background: var(--accent);
+  border-radius: 1.5rem 1.5rem 0 0;
+  box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  animation: prideFlow 10s ease infinite alternate;
+  background-size: 300% 300%;
+}
+
+/* Profile picture */
+.profile-pic {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(white, white), var(--accent);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* User Info Section */
+.user-info {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.user-info h2 {
+  background: var(--accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.user-info p {
+  color: var(--muted);
+  margin: 0.3rem 0;
+}
+
+/* Tags and Interests */
+.tags,
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag,
+.interest {
+  background: linear-gradient(90deg, #fcd34d, #f472b6, #60a5fa);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Bio section */
+.bio-section {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.bio-section h3 {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.bio-section p {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.action-buttons button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.8rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.action-buttons .edit-btn {
+  background: var(--accent);
+  color: white;
+}
+
+.action-buttons .edit-btn:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.action-buttons .message-btn {
+  background: white;
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+
+.action-buttons .message-btn:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .user-info h2 {
+    font-size: 1.6rem;
+  }
+
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+:root {
+  --panel-bg: #e6e9ea;
+  --card-bg: #ffffff;
+  --soft-border: rgba(240,100,140,0.15);
+  --shadow-lg: 0 18px 30px rgba(0,0,0,0.12);
+  --shadow-soft: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* PAGE WRAPPER */
+.ps-page {
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+  padding: 48px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* PANEL */
+.ps-panel {
+  width: 520px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: var(--rounded-panel);
+  padding: 44px 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: visible;
+  overflow: visible;
+}
+
+/* CARD */
+.ps-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 30px 28px;
+  box-shadow: none;
+}
+
+.ps-card h1 {
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  color: #111;
+  letter-spacing: 0.4px;
+  text-align: center;
+}
+
+/* FORM ELEMENTS (textarea + inputs inside CreatePostForm) */
+.ps-card input[type="text"],
+.ps-card textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(200,30,80,0.10);
+  background: #fff5f7;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow .18s ease, border-color .18s ease;
+}
+
+.ps-card input:focus,
+.ps-card textarea:focus {
+  border-color: rgba(240,100,140,0.45);
+  box-shadow: 0 3px 10px rgba(240,100,140,0.10);
+}
+
+/* BUTTONS */
+.ps-btn {
+  background-size: 300% 100%;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 12px 12px;
+  height: 50px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 25px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  cursor: pointer;
+  animation: prideWave 5s linear infinite;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ps-btn:hover {
+  transform: translateY(-2px);
+}
+
+.ps-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: #333;
+  box-shadow: var(--shadow-soft);
+}
+
+/* BUTTON ROW */
+.ps-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* SELECTED FILE ITEMS */
+.ps-selected {
+  font-size: 13px;
+  color: #666;
+}
+
+/* MOBILE FIXES */
+@media (max-width: 640px) {
+  .ps-card { padding: 22px; width: 92%; }
+  .ps-panel { padding: 26px; }
+}
+
+/* CARD SHADOW STRIP */
+.ps-card:after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 6px;
+  bottom: -18px;
+  border-radius: 12px;
+  filter: blur(14px);
+  opacity: 0.08;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+}

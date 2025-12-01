@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: psn_db
+    environment:
+      MYSQL_ROOT_PASSWORD: banana
+      MYSQL_DATABASE: prideapp
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - db_data:/var/lib/mysql
+    command: [
+      "--default-authentication-plugin=mysql_native_password",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_0900_ai_ci"
+    ]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./pride-stem-networking/backend
+      dockerfile: Dockerfile
+    container_name: psn_backend
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: app
+      DB_PASSWORD: app
+      DB_NAME: prideapp
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      db:
+        condition: service_healthy
+    # optional live-reload if you use nodemon and want to edit locally:
+    # volumes:
+    #   - ./pride-stem-networking/backend:/app
+
+  frontend:
+    build:
+      context: ./pride-stem-networking/frontend
+      dockerfile: Dockerfile
+    container_name: psn_frontend
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:4000
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    # optional live-edit:
+    # volumes:
+    #   - ./pride-stem-networking/frontend:/app
+
+volumes:
+  db_data:

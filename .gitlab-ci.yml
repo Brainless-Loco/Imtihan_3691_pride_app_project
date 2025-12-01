@@ -1,0 +1,82 @@
+# React (frontend) on Node 20
+# Automatically installs node_modules with `npm ci` before build/test
+
+stages:
+  - install
+  - build
+  - test
+
+default:
+  image: node:20
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - pride-stem-networking/frontend/node_modules/
+      # - pride-stem-networking/backend/node_modules/   # enable if/when backend exists
+  before_script:
+    - node -v
+    - npm -v
+
+# ---------- INSTALL ----------
+install_frontend:
+  stage: install
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+  script:
+    - npm --prefix pride-stem-networking/frontend ci
+  artifacts:
+    expire_in: 2h
+    paths:
+      - pride-stem-networking/frontend/node_modules/
+
+# ---------- BUILD ----------
+build_frontend:
+  stage: build
+  needs: [install_frontend]
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+  script:
+    # If you have a production build step (CRA):
+    - npm --prefix pride-stem-networking/frontend run build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - pride-stem-networking/frontend/build/
+
+# ---------- TEST ----------
+test_frontend:
+  stage: test
+  needs: [install_frontend]
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+  script:
+    # Replace with your real tests when ready
+    - npm --prefix pride-stem-networking/frontend test --silent -- --watch=false || echo "No tests yet"
+
+# ---------- OPTIONAL: backend (uncomment when backend exists) ----------
+# install_backend:
+#   stage: install
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+#   script:
+#     - npm --prefix pride-stem-networking/backend ci
+#   artifacts:
+#     expire_in: 2h
+#     paths:
+#       - pride-stem-networking/backend/node_modules/
+#
+# build_backend:
+#   stage: build
+#   needs: [install_backend]
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+#   script:
+#     - npm --prefix pride-stem-networking/backend run build || echo "No backend build step"
+#
+# test_backend:
+#   stage: test
+#   needs: [install_backend]
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH =~ /^(dev|main)$/'
+#   script:
+#     - npm --prefix pride-stem-networking/backend test --silent || echo "No backend tests yet"

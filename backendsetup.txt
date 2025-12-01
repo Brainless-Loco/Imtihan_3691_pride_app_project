@@ -1,0 +1,13 @@
+# HOW TO SETUP BACKEND
+ 1. add .env file to backend folder and add the following content to it. (Assuming your password for root is blank)
+
+MYSQL_HOST='127.0.0.1'
+MYSQL_USER ='root'
+MYSQL_PASSWORD=''
+MYSQL_DATABASE='prideapp'
+
+2. install necessary packages (express, bcrypt, mysql2, dotenv)
+
+3. Make sure your sql server on your machine is running
+
+4. Go to  the bottom of database.js and run initializeDatabase(), this will add dummy data into your database called 'prideapp' 

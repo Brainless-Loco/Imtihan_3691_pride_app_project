@@ -1,0 +1,156 @@
+:root{
+  --panel-bg: #e6e9ea;
+  --card-bg: #ffffff;
+  --accent-1: #fce9b8;
+  --accent-2: #f08be6;
+  --soft-border: rgba(240,100,140,0.15);
+  --shadow-lg: 0 18px 30px rgba(0,0,0,0.12);
+  --shadow-soft: 0 6px 12px rgba(0,0,0,0.08);
+  --rounded-panel: 22px;
+  --rounded-card: 16px;
+  --pill-radius: 999px;
+}
+
+.ps-page {
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), transparent);
+  padding: 48px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* PANEL */
+.ps-panel {
+  width: 520px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: var(--rounded-panel);
+  padding: 44px 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+  position: relative;
+  overflow: visible;
+  overflow: visible;
+}
+
+.ps-logo {
+display: none !important;
+}
+
+.ps-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  padding: 30px 28px;
+  box-shadow: none; 
+}
+
+.ps-card h2, .ps-card h1 {
+  font-family: "Luckiest Guy", "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0 0 14px 0;
+  font-size: 28px;
+  color: #111;
+  letter-spacing: 0.4px;
+}
+
+.ps-step {
+  font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.ps-card input[type="text"],
+.ps-card input[type="email"],
+.ps-card input[type="number"],
+.ps-card textarea,
+.ps-card input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 28px;
+  border: 1px solid rgba(200,30,80,0.06);
+  background: linear-gradient(180deg, rgba(255,250,250,1), rgba(255,245,247,1));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  font-family: "Rubik", sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow .18s ease, border-color .18s ease, transform .06s;
+}
+
+.ps-card input:focus,
+.ps-card textarea:focus {
+  border-color: rgba(240,100,140,0.45);
+  box-shadow: 0 6px 18px rgba(240,100,140,0.06);
+  transform: translateY(-1px);
+}
+
+.ps-card label {
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ps-btn {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: var(--pill-radius);
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-family: "Rubik", sans-serif;
+  box-shadow: 0 10px 18px rgba(240,120,160,0.18), 0 4px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.ps-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 32px rgba(240,120,160,0.22); }
+.ps-btn:active { transform: translateY(-1px); }
+
+.ps-btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: #333;
+  box-shadow: var(--shadow-soft);
+}
+
+.ps-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.ps-actions .right {
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.ps-selected {
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 640px) {
+  .ps-card { padding: 22px; width: 92%; }
+  .ps-logo { left: 16px; top: 14px; width: 44px; height: 44px; }
+  .ps-panel { padding: 26px; }
+}
+
+.ps-card:after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 6px;
+  bottom: -18px;
+  border-radius: 12px;
+  filter: blur(14px);
+  opacity: 0.08;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+}

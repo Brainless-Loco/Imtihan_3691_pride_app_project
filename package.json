@@ -1,0 +1,22 @@
+{
+    "name": "pride-stem-networking",
+    "private": true,
+    "scripts": {
+        "setup": "npm run setup:frontend",
+        "setup:frontend": "cd ./frontend && npm ci || npm install",
+        "start": "npm run setup && cd ./frontend && npm start"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.1",
+        "@mui/icons-material": "^7.3.4",
+        "@mui/material": "^7.3.4",
+        "@mui/styled-engine-sc": "^7.3.3",
+        "dotenv": "^17.2.3",
+        "react-router-dom": "^6.30.1",
+        "styled-components": "^6.1.19"
+    }
+}

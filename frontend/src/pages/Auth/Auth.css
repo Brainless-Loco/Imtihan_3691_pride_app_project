@@ -1,0 +1,44 @@
+.forgot-pass-text {
+    font-family: Moul;
+    font-weight: bolder;
+    font-size: 25px;
+    text-align: center;
+    margin: 30px 0px;
+    color: black;
+}
+
+.input-label-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+    text-align: left !important;
+}
+
+.input{
+    background-color: #FFEBEB;
+    border: 1px solid #FFD2F2;
+    height: 40px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    color:#666363;
+    font-size: 15px;
+    font-weight: bolder;
+    margin: auto;
+    margin-top: 10px;
+}
+.reset-btn{
+   background: linear-gradient(90deg, rgba(248, 234, 155, 0.56) 0%, rgba(234, 127, 255, 0.56) 44.83%, rgba(248, 45, 204, 0.56) 89.66%);
+   
+    color: black;
+    font-weight: bolder;
+    font-size: 18px;
+    padding: 12px 12px;
+    height: 50px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
